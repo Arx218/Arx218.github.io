@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>GitHub Page with Scheme Redirect</title>
+</head>
+<body>
+  <h1>Welcome to My GitHub Page!</h1>
+  
+  <button onclick="redirectApp()">Open App</button>
+
+  <script>
+    function redirectApp() {
+      var scheme = "myapp://";  // 替换为你要跳转的应用的 Scheme
+      var fallbackUrl = "https://example.com/";  // 如果应用不可用，跳转到的备用网址
+
+      // 创建一个临时的 <a> 元素
+      var link = document.createElement("a");
+      link.href = scheme;
+
+      // 检查浏览器是否支持跳转应用
+      if (link.protocol === "http:" || link.protocol === "https:") {
+        // 如果不支持，跳转到备用网址
+        window.location.href = fallbackUrl;
+      } else {
+        // 如果支持，执行 Scheme 跳转
+        window.location.href = scheme;
+      }
+    }
+  </script>
+</body>
+</html>
